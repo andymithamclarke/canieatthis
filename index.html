@@ -1,0 +1,44 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Can I Eat This?</title>
+    <link rel = "stylesheet" href = "mystyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <main class="content-wrapper">
+      <div class = "landing">
+        <!-- <img src = "images/landingimage (1).jpg" alt = "Chopping Board" style = "width:100%;"> -->
+          <div class = "landing-text">
+            <h1>Can I Eat This?</h1>
+            <h2>Making your food choices simpler</h2>
+          </div>
+      </div>
+
+      <form>
+        <label>Select your dietary preferences</label>
+        <select multiple name="conditions-form" id="dietary-preferences" for="dietary-preferences">
+          <option value = "gluten-free">Gluten Free</option>
+          <option value = "lactose-free">Lactose Free</option>
+          <option value = "peanut-free">Peanut Free</option>
+          <option value = "vegan">Vegan</option>
+          <option value = "vegetarian">Vegetarian</option>
+        </select>
+
+        <label>Enter the barcode number</label>
+        <input name = "barcode" type = "number" id = "barcode">
+
+        <button id="submit-button" class="row-5-col-4 grey-box flex-container align-center justify-center">SUBMIT</button>
+      </form>
+
+      <div id="response-container">
+        <h1 id="product-name"></h1>
+        <h1 id="heading"></h2>
+			  <h3 id="response-description"></h3>
+      </div>
+    </main>
+    <script src="script.js" type="text/javascript"></script>
+  </body>
+</html>
