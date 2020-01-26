@@ -46,7 +46,7 @@ def get_sem(res):
 class Test(Resource):
     def get(self):
         args = parser.parse_args()
-        barcode = args["barcode"]
+        barcode = args["b   arcode"]
         conditions = json.loads(args["conditions"])        
         product = "https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json"
         productreq = requests.get(product)
@@ -54,6 +54,7 @@ class Test(Resource):
         jconditions = {}
         res = {}
         if (productvalues["status"]):
+            aux = "".join(productvalues["product"]["labels_tags"])
             if ("image_url" in productvalues["product"].keys()):
                 jconditions["image"] = productvalues["product"]["image_url"]
             else:
@@ -74,7 +75,10 @@ class Test(Resource):
                     if not(ingredients["maybe"]):
                         res["vegan"] = 2
                     else:
-                        res["vegan"] = 1
+                        if("vegan" in aux):
+                            res["vegan"] = 2
+                        else:
+                            res["vegan"] = 1
                     jconditions["ingredients"] = ingredients
                 else:
                     res["vegan"] = 0
@@ -82,8 +86,13 @@ class Test(Resource):
                 if(conditions["vegetarian"] == vege):
                     ingredients = get_ingredients("vegetarian", productvalues)
                     jconditions["ingredients"] = ingredients
-                    if (ingredients["maybe"]):
-                        res["vegetarian"] = 1
+                    if(ingredients["maybe"]):
+                        if("vegetarian" in aux):
+                            res["vegetarian"] = 2
+                        else:
+                            res["vegetarian"] = 1
+                    else:
+                    res["vegetarian"] = 2
                 else:
                     res["vegetarian"] = 0
             jconditions["sem"] = get_sem(res)
