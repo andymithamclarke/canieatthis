@@ -56,7 +56,7 @@ def veg_check(tags,tag,ingredients,res):
 class Test(Resource):
     def get(self):
         args = parser.parse_args()
-        barcode = args["b   arcode"]
+        barcode = args["barcode"]
         conditions = json.loads(args["conditions"])        
         product = "https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json"
         productreq = requests.get(product)
