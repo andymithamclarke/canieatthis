@@ -43,6 +43,16 @@ def get_sem(res):
             return "YELLOW"
     return "GREEN"
 
+def veg_check(tags,tag,ingredients,res):
+  if not(ingredients["maybe"]):
+    res[tag] = 2
+  else:
+    if(tag in tags):
+      res[tag] = 2
+    else:
+      res[tag] = 1
+  return res
+
 class Test(Resource):
     def get(self):
         args = parser.parse_args()
@@ -72,13 +82,7 @@ class Test(Resource):
             if (conditions["vegan"]):
                 if(conditions["vegan"] == veg):
                     ingredients = get_ingredients("vegan", productvalues)
-                    if not(ingredients["maybe"]):
-                        res["vegan"] = 2
-                    else:
-                        if("vegan" in aux):
-                            res["vegan"] = 2
-                        else:
-                            res["vegan"] = 1
+                    res = veg_check(aux, "vegan", ingredients, res)
                     jconditions["ingredients"] = ingredients
                 else:
                     res["vegan"] = 0
@@ -86,13 +90,7 @@ class Test(Resource):
                 if(conditions["vegetarian"] == vege):
                     ingredients = get_ingredients("vegetarian", productvalues)
                     jconditions["ingredients"] = ingredients
-                    if(ingredients["maybe"]):
-                        if("vegetarian" in aux):
-                            res["vegetarian"] = 2
-                        else:
-                            res["vegetarian"] = 1
-                    else:
-                    res["vegetarian"] = 2
+                    res = veg_check(aux, "vegetarian", ingredients, res)
                 else:
                     res["vegetarian"] = 0
             jconditions["sem"] = get_sem(res)
