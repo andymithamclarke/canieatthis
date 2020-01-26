@@ -47,14 +47,17 @@ class Test(Resource):
     def get(self):
         args = parser.parse_args()
         barcode = args["barcode"]
-        conditions = json.loads(args["conditions"])
-        
+        conditions = json.loads(args["conditions"])        
         product = "https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json"
         productreq = requests.get(product)
         productvalues = json.loads(productreq.content)
         jconditions = {}
         res = {}
         if (productvalues["status"]):
+            if ("image_url" in productvalues["product"].keys()):
+                jconditions["image"] = productvalues["product"]["image_url"]
+            else:
+                jconditions["image"] = "Not Found"
             jconditions["name"] = productvalues["product"]["product_name"]
             jconditions["code"] = 1
             if (conditions["gluten"]):
