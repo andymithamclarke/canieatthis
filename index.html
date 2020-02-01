@@ -3,69 +3,79 @@
   <head>
     <meta charset="utf-8">
     <title>Can I Eat This?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel = "stylesheet" href = "style.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
   </head>
-  <!-- 
-	THE BODY 
+  <!--
+	THE BODY
   -->
 	<body>
-		<!-- 
+		<!--
 			LINK AXIOS
   		-->
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-		<!-- 
+		<!--
 			LANDING CONTENT WRAPPER
   		-->
   		<main class="content-wrapper">
 
-		<!-- 
+		<!--
 			TITLE SECTION
-  		-->  
+  		-->
   		<section class = "landing">
-	        <div class = "landing-text">
-	        	<h1>Can I Eat This?</h1>
-	            <h2>Making your food choices simpler</h2>
+	        <div id = "landing-text">
+	        	<h1 id="logo">Can I Eat This?</h1>
+	            <h2 id="tagline">Making your food choices simpler</h2>
 	        </div>
 		</section>
 
-		<!-- 
+		<!--
 			BARCODE SEARCH
   		-->
-  		
+
   		<div class="form">
-  			<!-- 
-			SELECT OPTION - DIETARY PREFERENCES 
+  			<!--
+			SELECT OPTION - DIETARY PREFERENCES
   			-->
-			<label>Select your dietary preferences</label>
-			<select multiple name="conditions-form" id="dietary-preferences" for="dieatary-preferences" >
+			<label>Select your dietary preferences</label><br>
+			<select multiple name="conditions-form" id="dietary-preferences" for="dieatary-preferences" class="selectpicker" multiple data-live-search="true">
 	          	<option value = "gluten">Gluten Free</option>
 	          	<option value = "lactose-free">Lactose Free</option>
 	          	<option value = "peanut-free">Peanut Free</option>
 	          	<option value = "vegan">Vegan</option>
 	          	<option value = "vegetarian">Vegetarian</option>
-	        </select>
+	        </select><br>
 
-	        <!-- 
-			BARCODE SEARCH 
+	        <!--
+			BARCODE SEARCH
   			-->
-
+      <label>Enter the barcode of the product</label>
 			<input title="SEARCH" id="barcode" class="form-search-bar col-row-4" type='text'>
 
-			<!-- 
-			BUTTON 
+			<!--
+			BUTTON
   			-->
 
 			<button id="submit-button" class="row-5-col-4 grey-box flex-container align-center justify-center">SUBMIT</button>
 		</div>
-  		
+
 	    </main>
 
 
-	    <!-- 
+	    <!--
 			RESULTS CONTAINER
   		-->
+
+  		<div class="line">
+  			
+  		</div>
 
 	    <div id="response-container">
 			<h1 id="product-name"></h1>

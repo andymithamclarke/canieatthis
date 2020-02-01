@@ -15,7 +15,7 @@ body {
 }
 
 .landing {
-  grid-area: 1/1/2/-1;;
+  grid-area: 1/1/2/-1;
 }
 
 
@@ -29,17 +29,19 @@ body {
 
 }
 
-.landing-text {
+#landing-text {
   color: white;
   background-color: rgba(0, 102, 34, 0.5);
-  margin-top: 4em;
+  margin: 50px;
   padding: 2em;
   width: 90%;
+  justify-items: center;
+  grid-area: 1/1/2/-1;
 
 }
 
-.landing-text h1 {
-  font-size: 5em;
+#logo {
+  font-size: 4.5em;
   padding: 0px;
   margin: 0px;
   font-weight: 700;
@@ -47,7 +49,7 @@ body {
 
 }
 
-.landing-text h2 {
+#tagline {
   font-size: 2.5em;
   margin: 0;
   padding: 0px;
@@ -60,28 +62,33 @@ body {
   grid-area: 2/2/3/2;
 }
 
-.form, input, label {
-  padding-top: 5em;
+.form {
+  padding: 20px;
 }
+
 
 label {
   font-size: 1.5em;
   color: black;
+  padding-left: 0px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
 
 .results {
   grid-area: 3/2/-1/2;
 }
 
-#barcode, select {
-  padding: 2em;
-  margin-top: 2em;
+select {
+  padding: 30px;
+  margin-top: 20px;
 }
 
 #barcode {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-bottom: 30px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -96,6 +103,11 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  line-height: 2;
+}
+
+option {
+  font-size: 1.5em;
 }
 
 #submit-button {
@@ -110,8 +122,6 @@ select {
 }
 
 
-
-
 /* ========
 
 EXTRA CSS
@@ -123,18 +133,20 @@ EXTRA CSS
 
 #response-container{
   display: none;
-  background-image: url("https://images.unsplash.com/photo-1523878288860-7ad281611901?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80");
+  color: #282828;
+  background-image: url("https://images.unsplash.com/photo-1528731708534-816fe59f90cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80");
   background-size: cover;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(7, 1fr);
   grid-gap: 0.8em;
   width:100vw;
   height: 100vh;
-  font-family: Playflair Display;
 
 }
 
 #product-name{
+  font-size: 3em;
+  margin-top: 1em;
   grid-column:1/6;
   grid-row:1/2;
   text-align: center;
@@ -145,12 +157,22 @@ EXTRA CSS
   max-height: 70vh;
 }
 
+
+.can-i-eat {
+  font-size: 2em; 
+  font-weight: 700;
+}
+
 #heading{
+  margin-top: 3.5em;
+  font-size: 1.8em;
   grid-column:3/6;
   grid-row:2/3;
+  font-weight: 700;
 }
 
 #response-description{
+  font-size: 2em;
   grid-column:3/6;
   grid-row:3/4;
 }
@@ -159,10 +181,74 @@ EXTRA CSS
   grid-column:3/6;
   grid-row:7/8;
   text-transform: capitalize;
+  font-size: 1.2em;
 }
 
 .product-image {
   grid-column: 3/6;
   grid-row: 4/7;
   max-height: 30vh;
+  border-radius: 6px;
+  box-shadow: 3px 3px #282828;
+
+}
+
+.line {
+  display: none;
+  height: 0.5vh;
+  width: 100vw;
+  background-color: #4E4E50;
+}
+
+@media (max-width: 600px) {
+
+  .can-i-eat {
+    font-size: 1.3em;
+  }
+
+  #response-container {
+    text-align: center;
+    height: 100vh;
+  }
+
+  #product-name {
+    grid-column: 1/6;
+    grid-row: 1/2;
+
+  }
+  .trafficLight {
+    grid-column: 1/6;
+    grid-row: 3/6;
+    max-height: 45vh;
+  }
+
+  #heading {
+    grid-column: 1/6;
+    grid-row: 2/3;
+  }
+  #response-description {
+    margin-top: 1em;
+    grid-column: 1/6;
+    grid-row: 7;
+    vertical-align: baseline;
+  }
+  .ingredients {
+    grid-column: 1/6;
+    grid-row: 7/8;
+    text-transform: capitalize;
+  }
+  .product-image {
+    display: none;
+  }
+
+
+
+  label {
+    font-size: 1.5em;
+  }
+
+  #logo, #tagline {
+    font-size: 2.2em;
+
+  }
 }
