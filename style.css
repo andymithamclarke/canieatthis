@@ -9,7 +9,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   height: 100vh;
-  background-image: url("brooke-lark-wMzx2nBdeng-unsplash.jpg");
+  background-image: url("https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80");
   background-size: cover;
   justify-items: center;
 }
